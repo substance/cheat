@@ -1,0 +1,159 @@
+<html>
+<head>
+  <script>
+    window.onload = function() {
+      
+      // returns 5
+      function five() {
+        return new Promise(function(resolve, reject) {
+          setTimeout(function() {
+            resolve(5);
+          }, 0);
+        });
+      }
+
+      function seven() {
+        return new Promise(function(resolve, reject) {
+          setTimeout(function() {
+            resolve(7);
+          }, 0);
+        });
+      }
+
+      function promisedThrow() {
+        return new Promise(function(resolve, reject) {
+          throw new Error('As promised!');
+        });
+      }
+
+      function nestedPromise() {
+        return five().then(function(resFive) {
+          return seven().then(function(resSeven) {
+            return resFive + resSeven;
+          });
+        });
+      }
+
+      function throwingNestedPromise() {
+        return five().then(function(resFive) {
+          return seven().then(function(resSeven) {
+            throw new Error('meh');
+          });
+        });
+      }
+
+      function flattenedPromise() {
+        var sum = 0;
+        return five()
+          .then(function(resFive) {
+            sum += resFive;
+          })
+          .then(seven)
+          .then(function(resSeven) {
+            return sum + resSeven;
+          });
+      }
+
+      function throwingFlattenedPromise() {
+        var sum = 0;
+        return five()
+          .then(function(resFive) {
+            throw new Error('Muh!');
+          })
+          .then(seven)
+          .then(function(resSeven) {
+            return sum + resSeven;
+          });
+      }
+
+      // Transform promise result
+      function transformPromise() {
+        return five().then(function(val) {
+          // seven().then(function(value))
+          return 3;
+        });
+      }
+
+      function transformWithThrow() {
+        return five().then(function(val) {
+          throw new Error('something went wrong');
+          return 3;
+        });
+      }
+
+      // get a promise and append custom handlers
+      transformPromise().then(function(res) {
+        console.log('Then', res);
+      });
+
+      // stops in the debugger at the error position
+      transformWithThrow().then(function(res) {
+        console.log('Then', res);
+      })
+      // ... while this catching the error correctly 
+      transformWithThrow().then(function(res) {
+        console.log('Then', res);
+      }).catch(function(err) {
+        console.log('le error', err);
+      });
+
+      // it is ok to nest promises, i.e., [a, [b, c]] gives the same result as [a, b, c]
+      nestedPromise().then(function(res) {
+        console.log('sum 5+7', res);
+      });
+
+      // the exception is caught, unfortunately Chrome does not stop when removing the catch block
+      throwingNestedPromise().then(function(res) {
+        console.log('This should not be executed');
+      }).catch(function(err) {
+        console.error('le err', err);
+      });
+
+      // you can use promising functions directly
+      five().then(seven).then(function(res) {
+        console.log('Res', res);
+      });
+
+      // this way the nested promise can be flattened
+      flattenedPromise().then(function(res){
+        console.log('sum 5+7', res);
+      });
+      //... and this will make the debugger again stop at the error position
+      throwingFlattenedPromise().then(function(res){
+        console.log('sum 5+7', res);
+      });
+
+
+      function sum(promisedValues) {
+        return Promise.all(promisedValues).then(function(values) {
+          var result = values.reduce(function(agg, val) {
+            return agg + val;
+          });
+          return result;
+        });
+      }
+
+      // make sure to provide Promises here (not functions)
+      // we can mix it with real values
+      sum([five(), seven(), 8]).then(function(result) {
+        console.log('SUM', result);
+      });
+
+      // having an exception in one of the promises will make the debugger stop at the right position
+      sum([five(), promisedThrow(), seven(), 8]).then(function(result) {
+        console.log('SUM', result);
+      });
+      // ... and this catches the error
+      sum([five(), promisedThrow(), seven(), 8]).then(function(result) {
+        console.log('SUM', result);
+      }).catch(function(err) {
+        console.log('Caught error', err);
+      });
+
+    };
+  </script>
+</head>
+<body>
+
+</body>
+</html>
