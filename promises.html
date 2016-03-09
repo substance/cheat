@@ -150,6 +150,27 @@
         console.log('Caught error', err);
       });
 
+      // continuing after catching exception
+      five().then(function() {
+        throw new Error('some error');
+      }).catch(function(err) {
+        console.log('we just do something in an error case');
+        return {foo: 'bar'};
+      }).then(function(data) {
+        console.log('data', data);
+      });
+
+      // Throwing inside a catch block
+      five().then(function() {
+        throw new Error('some error');
+      }).catch(function(err) {
+        jadslfa
+      }).then(function(data) {
+        console.log('this should not be executed');
+      }).catch(function(err) {
+        console.log('catched the final error', err);
+      });
+
     };
   </script>
 </head>
