@@ -1,0 +1,107 @@
+<html>
+<head>
+  <style>
+    @import '../reset.css';
+    body {
+      line-height: 25px; /* slightly more space between text lines */
+      overflow: hidden; /* makes sure not the whole thing (=body) scrolls */
+      font-family: 'Avenir Next', Helvetica, Arial;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .se-cat-image {
+      float: left;
+      padding-right: 20px;
+      padding-bottom: 20px;
+    }
+
+    .se-app {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .se-content-pane {
+      flex: 2 0 0;
+      overflow: auto;
+    }
+
+    .se-content-pane h1 {
+      clear: both;
+      font-size: 25px;
+      font-weight: 600;
+    }
+
+    .se-content {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .se-content > * {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .se-codeblock {
+      position: relative;
+      background: #eee;
+      border-radius: 5px;
+    }
+
+    .se-codeblock > pre {
+      font-size: 18px;
+      overflow: auto;
+      font-family: Monaco;
+      padding: 10px 20px;
+    }
+
+    .se-codeblock > .se-language {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      font-size: 11px;
+      font-weight: 600;
+      background: #ddd;
+      color: #000;
+      padding: 0px 4px;
+      border-radius: 3px;
+    }
+
+    .se-menu {
+      background: green;
+      flex: 0 0 50px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="se-app">
+    <!-- fixed toolbar -->
+    <div class="se-menu">
+      XXX
+    </div>
+    <!-- scrollable content -->
+    <div class="se-content-pane">
+      <div class="se-content">
+        <h1>Bla bla</h1>
+        <p>Pellentesque velit <strong>libero, imperdiet in tempus vel</strong>, faucibus quis orci. Quisque porta vitae metus vitae venenatis. <img class="se-cat-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6TrrHBxSV2PFL0ZNAb1OdYyt1tQlLLE3koI3dfneXSUi2-q_2d3W_NSY"/>Duis at tortor a neque dapibus feugiat. Aliquam pulvinar interdum egestas. Vestibulum egestas eu nisl auctor viverra. Proin iaculis maximus lacus ac malesuada. Duis eget neque neque. Quisque venenatis mauris ligula, sed aliquam magna elementum nec. Vivamus arcu urna, interdum vitae posuere in, tempus vitae velit. Etiam porta lorem nec eros dictum rutrum. Vestibulum bibendum quam tortor, nec commodo diam interdum quis. Suspendisse ac commodo libero.
+        </p>
+        <div class="se-codeblock">
+          <div class="se-language">Javascript</div>
+          <pre><code>function Panel(element, canClose, closeHandler) {
+  this.element = element;
+  this.canClose = canClose;
+  this.closeHandler = function () { if (closeHandler) closeHandler() };
+}</code></pre>
+        </div>
+        <h1>Bla bla</h1>
+        <p>Pellentesque velit libero, imperdiet in tempus vel, faucibus quis orci. Quisque porta vitae metus vitae venenatis. Duis at tortor a neque dapibus feugiat. Aliquam pulvinar interdum egestas. Vestibulum egestas eu nisl auctor viverra. Proin iaculis maximus lacus ac malesuada. Duis eget neque neque. Quisque venenatis mauris ligula, sed aliquam magna elementum nec. Vivamus arcu urna, interdum vitae posuere in, tempus vitae velit. Etiam porta lorem nec eros dictum rutrum. Vestibulum bibendum quam tortor, nec commodo diam interdum quis. Suspendisse ac commodo libero.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
