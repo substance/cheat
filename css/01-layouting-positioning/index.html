@@ -80,9 +80,32 @@
       background: green;
       flex: 0 0 50px;
     }
-    .se-menu_two {
+    .se-app_sec > .se-menu_two_intern {
       background: red;
+      height: 100%;
       flex: 0 0 50px;
+      display: flex;
+      flex-direction: column;
+    }
+    .se-menu_two_intern > .se-menu_two_up {
+      background: orange;
+      flex-grow: 1;
+    }
+    .se-menu_two_intern > .se-menu_two_down {
+      background: orange;
+      flex-grow:1;
+    }
+    .se-menu_two_intern > .se-menu_two{
+      height:30px;
+      flex: 0 0 30px;
+    }
+    .se-menu_two_intern > .se-menu_two_down_2 {
+      background: orange;
+      flex-grow:1;
+    }
+    .se-menu_two_intern > .se-menu_two_2{
+      height:30px;
+      flex: 0 0 30px;
     }
 
   </style>
@@ -94,9 +117,18 @@
       XXX
     </div>
   <div class="se-app_sec">
-    <div class="se-menu_two">
-      XXX
-    </div>
+    <div class="se-menu_two_intern">
+        <div class="se-menu_two_up">
+        </div>
+        <div class="se-menu_two">
+          XXX
+        </div>
+        <div class="se-menu_two_down"></div>
+        <div class="se-menu_two_2">
+          XXX
+        </div>
+        <div class="se-menu_two_down_2"></div>
+  </div>
     <!-- scrollable content -->
     <div class="se-content-pane">
       <div class="se-content">
