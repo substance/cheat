@@ -3,12 +3,10 @@
 <head>
   <style>
     @import '../reset.css';
-
     html,
     body {
       height: 100%;
     }
-
     body {
       line-height: 25px; /* slightly more space between text lines */
       overflow: hidden; /* makes sure not the whole thing (=body) scrolls */
@@ -29,6 +27,11 @@
       height: 100%;
       display: flex;
       flex-direction: column;
+    }
+    .se-app_sec {
+      height: 100%;
+      display: flex;
+      flex-direction: row;
     }
 
     .se-content-pane {
@@ -82,7 +85,52 @@
       background: green;
       flex: 0 0 50px;
     }
+    .se-app_sec > .se-menu_intern {
+      background: red;
+      max-width: 520px;
+      min-width:120px;
+      flex-grow: 1;
+      display: flex;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      flex-direction: column;
+    }
+    .se-menu_intern > .se-intern_one {
+      background: orange;
+      flex-grow: 1;
+    }
 
+    .se-menu_intern > .se-intern_two{
+      flex: 0 0 20px;
+      text-align: center;
+      padding: 10px 10px;
+
+    }
+     .se-intern_three {
+      background: orange;
+      flex-grow:1;
+      max-height: 318px;
+      min-height:85px;
+
+      display: flex;
+      justify-content: center;
+      padding: 10px 10px;
+    }
+    .se-menu_intern > .se-intern_four{
+      flex: 0 0 20px;
+      text-align: center;
+      padding: 10px 10px;
+
+    }
+
+    .se-menu_intern > .se-intern_five {
+      background: orange;
+      flex-grow:1;
+    }
+     .se-climb-image {
+       max-height: 100%;
+       max-width: 100%;
+    }
   </style>
 </head>
 <body>
@@ -91,6 +139,16 @@
     <div class="se-menu">
       XXX
     </div>
+  <div class="se-app_sec">
+    <div class="se-menu_intern">
+        <div class="se-intern_one"></div>
+        <div class="se-intern_two">XXX  </div>
+        <div class="se-intern_three">
+             <img class="se-climb-image" src="/home/cernadavid1/SVN_REPOS/Substance/cheat/css/01-layouting-positioning/206034.jpg"/>
+        </div>
+        <div class="se-intern_four">XXX</div>
+        <div class="se-intern_five"></div>
+  </div>
     <!-- scrollable content -->
     <div class="se-content-pane">
       <div class="se-content">
@@ -110,5 +168,7 @@
       </div>
     </div>
   </div>
+</div>
+
 </body>
 </html>
