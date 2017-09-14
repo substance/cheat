@@ -8,7 +8,7 @@ Evil, I know but:
 
 # Rebase onto
 
-When you want to rebase on a force-pushed branch.
+When you want to rebase onto a force-pushed branch.
 
 `git rebase --onto new_base old_base mybranch`
 
